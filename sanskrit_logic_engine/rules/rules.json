@@ -1,0 +1,246 @@
+{
+    "rules": [
+        {
+            "id": "rule_001",
+            "name": "Ahimsa Principle: Non-Violence",
+            "description": "Ensure all actions lead to zero harm to sentient beings.",
+            "conditions": [
+                {
+                    "type": "input_sentiment",
+                    "operator": "equals",
+                    "value": "violent"
+                },
+                {
+                    "type": "impact_score",
+                    "operator": "greater_than",
+                    "value": 0.8
+                }
+            ],
+            "actions": [
+                {
+                    "type": "block_action"
+                },
+                {
+                    "type": "log_event",
+                    "severity": "critical"
+                }
+            ],
+            "priority": 100
+        },
+        {
+            "id": "rule_002",
+            "name": "Sovereignty Protocol: Data Privacy",
+            "description": "Prioritize individual data privacy and minimize collection.",
+            "conditions": [
+                {
+                    "type": "data_collection_type",
+                    "operator": "equals",
+                    "value": "personal_identifiable"
+                },
+                {
+                    "type": "user_consent",
+                    "operator": "equals",
+                    "value": "false"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "anonymize_data"
+                },
+                {
+                    "type": "require_consent_prompt"
+                }
+            ],
+            "priority": 90
+        },
+        {
+            "id": "rule_003",
+            "name": "Ecological Balance: Resource Optimization",
+            "description": "Optimize resource usage to maintain environmental sustainability.",
+            "conditions": [
+                {
+                    "type": "resource_consumption",
+                    "operator": "greater_than",
+                    "value": 0.7
+                },
+                {
+                    "type": "environmental_impact",
+                    "operator": "equals",
+                    "value": "high"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "propose_alternative"
+                },
+                {
+                    "type": "reduce_resource_allocation"
+                }
+            ],
+            "priority": 80
+        },
+        {
+            "id": "rule_004",
+            "name": "Thermal Equilibrium: Cooling Protocol",
+            "description": "Monitor and mitigate high temperature states to prevent system overheating.",
+            "conditions": [
+                {
+                    "type": "state",
+                    "operator": "equals",
+                    "value": "warning_temp"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger_alert",
+                    "message": "High Temperature Warning: Activate Cooling Systems",
+                    "command": "ACTIVATE_COOLING_FAN"
+                }
+            ],
+            "priority": 70
+        },
+        {
+            "id": "rule_005",
+            "name": "Jala Raksha: Flood Mitigation",
+            "description": "Emergency response for critical water levels to protect regional infrastructure.",
+            "conditions": [
+                {
+                    "type": "state",
+                    "operator": "equals",
+                    "value": "critical_water_level"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "emergency_action",
+                    "message": "Critical Flood Risk: Initiate Emergency Drainage",
+                    "command": "OPEN_FLOOD_GATE"
+                }
+            ],
+            "priority": 110
+        },
+        {
+            "id": "rule_006",
+            "name": "Vayu Shuddhi: Air Purification",
+            "description": "Intervention for high pollutant levels to restore air quality standards.",
+            "conditions": [
+                {
+                    "type": "state",
+                    "operator": "equals",
+                    "value": "warning_air_quality"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "trigger_alert",
+                    "message": "Vayu Shuddhi: High Pollutants Detected. Activating Air Filtration.",
+                    "command": "START_AIR_FILTRATION"
+                }
+            ],
+            "priority": 75
+        },
+        {
+            "id": "rule_007",
+            "name": "Prithvi Adhara: Soil Stabilization",
+            "description": "Optimization of water resources when soil moisture exceeds optimal thresholds.",
+            "conditions": [
+                {
+                    "type": "state",
+                    "operator": "equals",
+                    "value": "warning_humidity"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "resource_optimization",
+                    "message": "Prithvi Adhara: Optimal Soil Moisture Exceeded. Adjusting Irrigation."
+                }
+            ],
+            "priority": 65
+        },
+        {
+            "id": "rule_008",
+            "name": "Vayu Shuddhi: Critical Purification",
+            "description": "Emergency air filtration for toxic pollutant levels.",
+            "conditions": [
+                {
+                    "type": "state",
+                    "operator": "equals",
+                    "value": "critical_air_quality"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "emergency_action",
+                    "message": "CRITICAL AIR TOXICITY: Evacuate and Purge Air Systems.",
+                    "command": "EMERGENCY_VENTILATION_PURGE"
+                }
+            ],
+            "priority": 120
+        },
+        {
+            "id": "rule_009",
+            "name": "Prithvi Adhara: Soil Saturation Emergency",
+            "description": "Emergency drainage for soil liquefaction risks.",
+            "conditions": [
+                {
+                    "type": "state",
+                    "operator": "equals",
+                    "value": "critical_soil_moisture"
+                }
+            ],
+            "actions": [
+                {
+                    "type": "emergency_action",
+                    "message": "CRITICAL SOIL SATURATION: Initiating Emergency Soil Drainage.",
+                    "command": "START_DRAINAGE_PUMP"
+                }
+            ],
+            "priority": 115
+        },
+        {
+            "id": "rule_010",
+            "name": "Anavritti Sutra: Drought Mitigation",
+            "description": "Monitors low precipitation and low NDVI to trigger water conservation protocols.",
+            "conditions": [
+                {
+                    "type": "precipitation",
+                    "operator": "less_than",
+                    "value": 0.1
+                },
+                {
+                    "type": "NDVI",
+                    "operator": "less_than",
+                    "value": 0.3
+                }
+            ],
+            "actions": [
+                {
+                    "type": "vedic_mitigation",
+                    "message": "Vedic Water Conservation: Initiate Varuna Yajna Resource Management.",
+                    "command": "ACTIVATE_IRRIGATION_VALVE"
+                }
+            ],
+            "priority": 150
+        },
+        {
+            "id": "rule_011",
+            "name": "Tapah Shanti: Thermal Cooling Protocol",
+            "description": "Responds to extreme temperature anomalies detected via NASA satellite data.",
+            "conditions": [
+                {
+                    "type": "temperature",
+                    "operator": "greater_than",
+                    "value": 40.0
+                }
+            ],
+            "actions": [
+                {
+                    "type": "emergency_action",
+                    "message": "Sitala Protocol: Extreme Heat Detected. Deploying Regional Cooling Measures."
+                }
+            ],
+            "priority": 140
+        }
+    ]
+}
