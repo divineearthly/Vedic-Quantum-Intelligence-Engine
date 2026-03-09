@@ -1,0 +1,42 @@
+name: VQIE CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install system dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y g++ build-essential
+
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pybind11 torch pandas numpy scikit-learn joblib paho-mqtt
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+    - name: Compile C++ Vedic Kernels
+      run: |
+        cd vedic_algorithms/src/
+        make clean
+        make
+
+    - name: Run Integration Tests
+      run: |
+        export PYTHONPATH=$PYTHONPATH:$(pwd)/vedic_algorithms/src:$(pwd)/lightweight_ai/models:$(pwd)/lightweight_ai/utils
+        python scripts/test_sensor_scenarios.py
